@@ -1,0 +1,60 @@
+USE tabela; //usar tabela
+
+SELECT campo FROM tabela; //selecionar campos especificos
+
+SELECT * FROM tabela; //selecionando todos os campos
+
+SELECT campo AS nome para campo FROM tabela; //apelido aos campos
+
+SELECT * FROM tabela WHERE filtro
+Exemplo:
+SELECT * FROM tabela-produtos WHERE codigo-produto = '1000889'; //filtrar informacao especifica de tabela
+
+SELECT * FROM tabela WHERE filtro BETWEEN 19.50 AND 19.52 //acha valor especifico 19.51...... quando for float
+
+
+SELECT * FROM tabela WHERE x = a OR x = b
+
+======================
+CONSULTAS CONDICIONAIS
+SELECT * FROM tabela WHERE x = a AND x = b
+Exemplo: 
+SELECT * FROM tabela WHERE sabor = 'manga' OR tamanho = '470 ml': //consultas condicionais
+
+SELECT * FROM tabela WHERE sabor IN ('Laranja', 'Manga'); 
+equivalente a 
+SELECT * FROM tabela WHERE sabor = 'Laranja' OR sabor = 'Manga';
+
+LIKE:
+SELECT * FROM tabela WHERE sabor LIKE '%maça%' //só vai procurar os que tiverem maçã no nome
+
+DISTINCT:
+SELECT DISTINCT * FROM tabela //
+
+SELECT embalagem, tamanho FROM tabela; //mostra todas as embalagens e os tamanhos
+SELECT DISTINCT embalagem, tamanho FROM tabela; //não traz combinações repetidas
+
+LIMIT:
+SELECT * FROM tabela LIMIT 4 // limita o numero de linhas exibidas
+SELECT * FROM tabela LIMIT 2,3 //pega o segundo +2
+
+SELECT * FROM tabela ORDER BY campo //apresenta o resultado ordenando pelo campo determinado
+
+CASE:
+SELECT nome-do-produto, preco-de-lista,
+CASE
+   WHEN preco-de-lista >= 12 THEN 'PRODUTO CARO'
+   WHEN preco-de-lista >= 7 AND preco-de-lista <12 THEN 'PRODUTO EM CONTA'
+   ELSE 'PRODUTO BARATO'
+END AS status-preco
+FROM tabela-de-produtos;
+
+JOIN:
+Unir uma ou mais tabelas atraves de campos em comums
+
+SUBCONSULTA:
+Usar uma consulta dentro de outra consulta
+===================== 
+FORMATO DE DATA CONVENCIONAL:
+
+SELECT CONCAT(DATE_FORMAT(CURRENT_TIMESTAMP(), %d/%m/%Y)) AS Data;
